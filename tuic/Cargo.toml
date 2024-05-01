@@ -1,0 +1,31 @@
+[package]
+name = "tuic"
+version = "5.0.0"
+authors = ["RustCult"]
+description = "Delicately-TUICed 0-RTT proxy protocol"
+categories = ["network-programming"]
+keywords = ["network", "proxy", "quic", "tuic"]
+edition = "2021"
+rust-version = "1.77.2"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+repository = "https://github.com/EAimTY/tuic"
+
+[features]
+async_marshal = ["bytes", "futures-util", "thiserror"]
+marshal = ["bytes", "thiserror"]
+model = ["parking_lot", "register-count", "thiserror"]
+
+[dependencies]
+bytes = { version = "1.6.0", default-features = false, features = ["std"], optional = true }
+futures-util = { version = "0.3.30", default-features = false, features = ["io", "std"], optional = true }
+parking_lot = { version = "0.12.2", default-features = false, optional = true }
+register-count = { version = "0.1.0", default-features = false, features = ["std"], optional = true }
+thiserror = { version = "1.0.59", default-features = false, optional = true }
+uuid = { version = "1.8.0", default-features = false, features = ["std"] }
+
+[dev-dependencies]
+tuic = { path = ".", features = ["async_marshal", "marshal", "model"] }
+
+[package.metadata.docs.rs]
+all-features = true

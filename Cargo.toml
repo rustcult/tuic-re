@@ -1,0 +1,9 @@
+[workspace]
+resolver = '2'
+members = ["tuic", "tuic-quinn", "tuic-server", "tuic-client"]
+
+[profile.release]
+lto = true
+strip = true
+codegen-units = 1
+panic = "abort"
